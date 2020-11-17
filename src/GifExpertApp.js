@@ -2,18 +2,17 @@
 
 import React, { Fragment, useState } from 'react'
 import AddCategory from './components/Category/AddCategory';
+import GifGrid from './components/Category/GifGrid';
 
 function GifExpertApp(props) {
 
-    const initialValues = ["One Punch", "Samurai X", "Dragon Ball"];
+    const initialValues = ["One Punch"];
 
     const [categories, setCategories] = useState(initialValues);
 
     const drawItemsList = () => {
         return categories.map(category => (
-            <Fragment key={category}>
-                <li>{category}</li>
-            </Fragment>
+            <GifGrid key={category} category={category} />
         ));
     }
 

@@ -9,6 +9,8 @@ function AddCategory({ setCategories }) {
 
     const handleInputChange = ({ target: { value } }) => setInputValue(value);
 
+    const Limpiar = () => setInputValue("");
+
     /**
      * Validador antes de agregar un nuevo elemento en el array de categorias
      * 
@@ -27,13 +29,13 @@ function AddCategory({ setCategories }) {
                 allowEscapeKey: false
             })
 
-            setInputValue("")
+            Limpiar()
             return [...oldArray];
         } else {
             const existe = oldArray.find(categoryValue => categoryValue === category);
 
-            setInputValue("")
-            return existe ? [...oldArray] : [...oldArray, category];
+            Limpiar()
+            return existe ? [...oldArray] : [category, ...oldArray];
         }
     }
 
