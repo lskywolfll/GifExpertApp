@@ -1,7 +1,6 @@
 
 
 import React, { Fragment, useState } from 'react'
-import PropTypes from 'prop-types'
 import AddCategory from './components/Category/AddCategory';
 
 function GifExpertApp(props) {
@@ -18,14 +17,10 @@ function GifExpertApp(props) {
         ));
     }
 
-    // const handleAddCategory = () => {
-    //     setCategories(oldArray => [...oldArray, "Holi!"]);
-    // }
-
     return (
         <>
             <h2>GifExpertApp</h2>
-            <AddCategory />
+            <AddCategory setCategories={setCategories} />
             <hr />
 
             <ol>
@@ -35,9 +30,4 @@ function GifExpertApp(props) {
     )
 }
 
-GifExpertApp.propTypes = {
-
-}
-
 export default GifExpertApp
-
