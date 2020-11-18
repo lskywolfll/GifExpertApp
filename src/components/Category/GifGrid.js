@@ -29,8 +29,13 @@ function GifGrid({ category }) {
     //     ));
     // }
 
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
+
     return (
         <>
+
             <h3>{category}</h3>
             {/* <div className="card-grid">
                 <ol>
