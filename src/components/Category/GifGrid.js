@@ -1,38 +1,42 @@
 
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import GridGifItem from './GridGifItem';
-import { getGifs } from '../../helper/getGifs';
+import { useFetchGifs } from '../../hooks/useFetchGifs'
+// import GridGifItem from './GridGifItem';
+// import { getGifs } from '../../helper/getGifs';
 
 function GifGrid({ category }) {
 
-    const [images, setImages] = useState([]);
+    // const [images, setImages] = useState([]);
 
-    useEffect(() => {
-        getGifs(category)
-            .then(setImages)
-            .catch(err => console.log(err))
-    }, [category])
+    const { data, loading } = useFetchGifs();
 
 
-    const drawListImages = () => {
-        return images.map((img) => (
-            <GridGifItem
-                key={img.id}
-                {...img}
-            />
-        ));
-    }
+    // useEffect(() => {
+    //     getGifs(category)
+    //         .then(setImages)
+    //         .catch(err => console.log(err))
+    // }, [category])
+
+
+    // const drawListImages = () => {
+    //     return images.map((img) => (
+    //         <GridGifItem
+    //             key={img.id}
+    //             {...img}
+    //         />
+    //     ));
+    // }
 
     return (
         <>
             <h3>{category}</h3>
-            <div className="card-grid">
+            {/* <div className="card-grid">
                 <ol>
                     {drawListImages()}
                 </ol>
-            </div>
+            </div> */}
         </>
     )
 }
