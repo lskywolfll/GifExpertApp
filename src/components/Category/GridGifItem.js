@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 function GridGifItem({ title, id, url }) {
     return (
-        <div className="card">
+        <div className="card animate__animated animate__bounceInUp">
             <img src={url} alt={title} />
             <p>{title}</p>
         </div>

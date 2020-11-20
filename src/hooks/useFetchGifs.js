@@ -11,10 +11,17 @@ export const useFetchGifs = (category) => {
     useEffect(() => {
         getGifs(category)
             .then(resp => {
-                setState({
-                    data: resp,
-                    loading: false
-                });
+                if (resp) {
+                    setState({
+                        data: resp,
+                        loading: false
+                    });
+                } else {
+                    setState({
+                        err: { message: "No se pudo obtener" },
+                        loading: false
+                    })
+                }
             })
             .catch(err => {
                 setState({
