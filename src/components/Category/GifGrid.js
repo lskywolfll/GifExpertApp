@@ -3,45 +3,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useFetchGifs } from '../../hooks/useFetchGifs'
-// import GridGifItem from './GridGifItem';
-// import { getGifs } from '../../helper/getGifs';
-
+import Loading from '../Loading';
+import GridGifItem from './GridGifItem';
 function GifGrid({ category }) {
 
-    // const [images, setImages] = useState([]);
+    const { data: images, loading, err } = useFetchGifs(category);
 
-    const { data, loading } = useFetchGifs();
+    const drawListImages = () => {
+        return images.map((img) => (
+            <GridGifItem
+                key={img.id}
+                {...img}
+            />
+        ));
+    }
 
-
-    // useEffect(() => {
-    //     getGifs(category)
-    //         .then(setImages)
-    //         .catch(err => console.log(err))
-    // }, [category])
-
-
-    // const drawListImages = () => {
-    //     return images.map((img) => (
-    //         <GridGifItem
-    //             key={img.id}
-    //             {...img}
-    //         />
-    //     ));
-    // }
+    if (err) {
+        return (
+            <>
+                <h1>Error</h1>
+                <p>{err.message}</p>
+            </>
+        )
+    }
 
     if (loading) {
-        return <h1>Loading...</h1>
+        return <Loading />
     }
 
     return (
         <>
 
             <h3>{category}</h3>
-            {/* <div className="card-grid">
+            <div className="card-grid">
                 <ol>
                     {drawListImages()}
                 </ol>
-            </div> */}
+            </div>
         </>
     )
 }
